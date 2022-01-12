@@ -1,0 +1,76 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "dotnet: build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "command": "dotnet",
+      "type": "process",
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "args": [
+        "build",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "dotnet: publish",
+      "group": "none",
+      "command": "dotnet",
+      "type": "process",
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "args": [
+        "publish",
+        "--configuration",
+        "Release",
+        "--use-current-runtime",
+        "--self-contained",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "dotnet: publish w/ profile",
+      "group": "none",
+      "command": "dotnet",
+      "type": "process",
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "args": [
+        "publish",
+        "/p:PublishProfile=${input:publishProfile}",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "publishProfile",
+      "type": "pickString",
+      "description": "Pick up the publish profile you want to use",
+      "default": "Help",
+      "options": [
+        "win-x64",
+        "win-arm64",
+        "osx-x64",
+        "osx-arm64",
+        "linux-x64",
+        "linux-arm64"
+      ]
+    }
+  ]
+}

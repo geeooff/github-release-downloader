@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyName>github-release-downloader</AssemblyName>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net8.0</TargetFramework>
+        <RootNamespace>GitHubReleaseDownloader</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Remove="Directory.Build.props" />
+        <None Remove="packages.lock.json" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+    </ItemGroup>
+
+</Project>

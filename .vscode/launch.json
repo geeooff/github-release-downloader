@@ -1,0 +1,32 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch Setting Profile",
+      "type": "coreclr",
+      "launchSettingsFilePath": "${workspaceFolder}/src/Properties/launchSettings.json",
+      "launchSettingsProfile": "${input:launchSettingsProfile}",
+      "request": "launch",
+      "preLaunchTask": "dotnet: build",
+      "program": "${workspaceFolder}/artifacts/bin/github-release-downloader/debug/github-release-downloader.dll",
+      "cwd": "${workspaceFolder}/artifacts/bin/github-release-downloader/debug",
+      "console": "integratedTerminal",
+      "stopAtEntry": true
+    }
+  ],
+  "inputs": [
+    {
+      "id": "launchSettingsProfile",
+      "type": "pickString",
+      "description": "Pick up the launchSetting profile you want to run",
+      "default": "Help",
+      "options": [
+        "Help",
+        "Version",
+        "FS25_AutoDrive",
+        "FS25_CoursePlay",
+        "FS25_UniversalAutoload"
+      ]
+    }
+  ]
+}
