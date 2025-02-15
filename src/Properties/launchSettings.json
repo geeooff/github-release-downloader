@@ -8,17 +8,9 @@
       "commandName": "Project",
       "commandLineArgs": "--version"
     },
-    "FS25_AutoDrive": {
+    "IisLogRotator-1.10.zip": {
       "commandName": "Project",
-      "commandLineArgs": "--owner Stephan-S --repo FS25_AutoDrive --output \"C:\\Users\\geoff\\OneDrive\\Documents\\My Games\\FarmingSimulator2025\\mods\\FS25_AutoDrive.zip\""
-    },
-    "FS25_CoursePlay": {
-      "commandName": "Project",
-      "commandLineArgs": "--owner Courseplay --repo Courseplay_FS25 --output \"C:\\Users\\geoff\\OneDrive\\Documents\\My Games\\FarmingSimulator2025\\mods\\FS25_Courseplay.zip\""
-    },
-    "FS25_UniversalAutoload": {
-      "commandName": "Project",
-      "commandLineArgs": "--owner loki79uk --repo FS25_UniversalAutoload --output \"C:\\Users\\geoff\\OneDrive\\Documents\\My Games\\FarmingSimulator2025\\mods\\FS25_UniversalAutoload.zip\"",
+      "commandLineArgs": "--owner geeooff --repo iis-log-rotator --output IisLogRotator-1.10.zip"
     }
   }
 }

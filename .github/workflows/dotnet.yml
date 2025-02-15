@@ -16,32 +16,50 @@ env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+  RID: unknown
 
 jobs:
   build:
     
     strategy:
       matrix:
-        profile: [ win-x64, win-arm64, osx-x64, osx-arm64, linux-x64, linux-arm64 ]
+        platform: [ ubuntu-latest, windows-latest, macos-latest ]
+        architecture: [ x64, arm64 ]
 
     runs-on: ubuntu-latest
-
+ 
     steps:
+    - name: Windows detection
+      if: runner.os == 'Windows'
+      run: echo Running on Windows ${{ runner.arch }}
+      env:
+        RID: win-${{ matrix.architecture }}
+    - name: Linux detection
+      if: runner.os == 'Linux'
+      run: echo Running on Linux ${{ runner.arch }}
+      env:
+        RID: linux-${{ matrix.architecture }}
+    - name: macOS detection
+      if: runner.os == 'macOS'
+      run: echo Running on macOS ${{ runner.arch }}
+      env:
+        RID: osx-${{ matrix.architecture }}
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        global-json-file: global.json
         cache: true
         cache-dependency-path: src/packages.lock.json
     - name: Restore dependencies
-      run: dotnet restore src/ --locked-mode
+      run: dotnet restore src/
     # - name: Build
-    #   run: dotnet build src/ --no-restore --configuration Release
+    #   run: dotnet build src/ --no-restore --runtime ${{ env.RID }} --configuration Release
     - name: Publish
-      run: dotnet publish src/ --no-restore /p:PublishProfile=${{ matrix.profile }}
+      run: dotnet publish src/ --no-restore --runtime ${{ env.RID }}
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.profile }} binary
-        path: artifacts/publish/github-release-downloader/release_${{ matrix.profile }}/*
+        name: ${{ env.RID }} binary
+        path: artifacts/publish/github-release-downloader/release_${{ env.RID }}/**/*
+ 

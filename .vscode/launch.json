@@ -11,7 +11,7 @@
       "program": "${workspaceFolder}/artifacts/bin/github-release-downloader/debug/github-release-downloader.dll",
       "cwd": "${workspaceFolder}/artifacts/bin/github-release-downloader/debug",
       "console": "integratedTerminal",
-      "stopAtEntry": true
+      "stopAtEntry": false
     }
   ],
   "inputs": [
@@ -23,9 +23,7 @@
       "options": [
         "Help",
         "Version",
-        "FS25_AutoDrive",
-        "FS25_CoursePlay",
-        "FS25_UniversalAutoload"
+        "IisLogRotator-1.10.zip"
       ]
     }
   ]
