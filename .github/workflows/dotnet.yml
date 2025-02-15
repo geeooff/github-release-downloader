@@ -23,10 +23,10 @@ jobs:
     
     strategy:
       matrix:
-        platform: [ ubuntu-latest, windows-latest, macos-latest ]
+        runner: [ ubuntu-latest, windows-latest, macos-latest ]
         architecture: [ x64, arm64 ]
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
  
     steps:
     - name: Windows detection
