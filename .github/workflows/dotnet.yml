@@ -22,33 +22,23 @@ jobs:
     
     strategy:
       matrix:
-        runner: [ ubuntu-latest, windows-latest, macos-latest ]
-        architecture: [ x64, arm64 ]
+        runner:
+          - os: ubuntu-latest
+            pid: linux
+          - os: windows-latest
+            pid: win
+          - os: macos-latest
+            pid: osx
+        architecture:
+          - x64
+          - arm64
 
-    runs-on: ${{ matrix.runner }}
-
-    env:
-      RID: unknown
+    runs-on: ${{ matrix.runner.os }}
  
+    env:
+      RID: ${{ matrix.runner.pid }}-${{ matrix.architecture }}
+
     steps:
-    - name: Windows detection
-      if: runner.os == 'Windows'
-      run: echo "Running on Windows ${{ runner.arch }}"
-      env:
-        RID: win-${{ matrix.architecture }}
-    - name: Linux detection
-      if: runner.os == 'Linux'
-      run: echo "Running on Linux ${{ runner.arch }}"
-      env:
-        RID: linux-${{ matrix.architecture }}
-    - name: macOS detection
-      if: runner.os == 'macOS'
-      run: echo "Running on macOS ${{ runner.arch }}"
-      env:
-        RID: osx-${{ matrix.architecture }}
-    - name: Unknown OS detection
-      if: env.RID == 'unknown'
-      run: exit 1
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
