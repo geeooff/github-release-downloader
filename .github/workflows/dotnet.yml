@@ -16,7 +16,6 @@ env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
-  RID: unknown
 
 jobs:
   build:
@@ -27,23 +26,29 @@ jobs:
         architecture: [ x64, arm64 ]
 
     runs-on: ${{ matrix.runner }}
+
+    env:
+      RID: unknown
  
     steps:
     - name: Windows detection
       if: runner.os == 'Windows'
-      run: echo Running on Windows ${{ runner.arch }}
+      run: echo "Running on Windows ${{ runner.arch }}"
       env:
         RID: win-${{ matrix.architecture }}
     - name: Linux detection
       if: runner.os == 'Linux'
-      run: echo Running on Linux ${{ runner.arch }}
+      run: echo "Running on Linux ${{ runner.arch }}"
       env:
         RID: linux-${{ matrix.architecture }}
     - name: macOS detection
       if: runner.os == 'macOS'
-      run: echo Running on macOS ${{ runner.arch }}
+      run: echo "Running on macOS ${{ runner.arch }}"
       env:
         RID: osx-${{ matrix.architecture }}
+    - name: Unknown OS detection
+      if: env.RID == 'unknown'
+      run: exit 1
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
