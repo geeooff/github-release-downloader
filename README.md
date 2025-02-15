@@ -6,6 +6,12 @@ My use case was beeing able to download Farming Simulator mods when these mods a
 
 I usually schedule a task in Windows to automatically call this program with the right arguments to keep my mods up to date.
 
+## Limitations
+
+To be able to download an asset from a release, its file name must be known before calling.
+
+No release for this program is available yet. You can build it yourself with the .NET SDK for now.
+
 ## Command line
 
 ```
@@ -23,7 +29,7 @@ Options:
   -?, -h, --help                Show help and usage information
 ```
 
-### Options
+### Arguments
 
 - `<owner>` is the repository owner;
   eg. `foo` in `github.com/foo/bar`
@@ -35,9 +41,19 @@ Options:
 - `--force` will enforce file overwrite even if the destination file is up to date.
 - `--create-backup` will create a backup to the file before overwriting it;
   eg. `C:\Users\geoff\Desktop\myfile.zip.bak`
-- `--version`
+- `--version` will display the program version number
+- `-?` or `-h` or `--help` will display the command line usage help
 
+### Example
+```shell
+github-release-downloader --owner Stephan-S --repo FS25_AutoDrive --output "C:\Users\geoff\Documents\My Games\FarmingSimulator2025\mods\FS25_AutoDrive.zip"
+```
 
-## Limitations
+### Exit codes
 
-To be able to download an asset from a release, its file name must be known before calling.
+- `0`: successful operation
+    - the release's asset file was downloaded locally
+    - the local file was already up to date with latest release
+- `1`: no release was found (check if `--pre-release` is required)
+- `2`: no asset in the latest release matches your destination file
+- `others`: unhandled runtime errors
