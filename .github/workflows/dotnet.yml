@@ -23,20 +23,11 @@ jobs:
     strategy:
       matrix:
         runner:
-          - os: ubuntu-latest
-            pid: linux
-          - os: windows-latest
-            pid: win
-          - os: macos-latest
-            pid: osx
-        architecture:
-          - x64
-          - arm64
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
 
-    runs-on: ${{ matrix.runner.os }}
- 
-    env:
-      RID: ${{ matrix.runner.pid }}-${{ matrix.architecture }}
+    runs-on: ${{ matrix.runner }}
 
     steps:
     - uses: actions/checkout@v4
@@ -47,14 +38,12 @@ jobs:
         cache: true
         cache-dependency-path: src/packages.lock.json
     - name: Restore dependencies
-      run: dotnet restore src/
-    # - name: Build
-    #   run: dotnet build src/ --no-restore --runtime ${{ env.RID }} --configuration Release
-    - name: Publish
-      run: dotnet publish src/ --no-restore --runtime ${{ env.RID }}
+      run: dotnet restore src/ --use-current-runtime
+    - name: Build
+      run: dotnet build src/ --configuration Release --no-restore --use-current-runtime --self-contained
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.RID }} binary
-        path: artifacts/publish/github-release-downloader/release_${{ env.RID }}/**/*
+        name: release binary
+        path: artifacts/publish/github-release-downloader/release/**/*
  
