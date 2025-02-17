@@ -40,13 +40,13 @@ Options:
   Please note `myfile.zip` must match the name of a single asset in the release.
 - `--force` will enforce file overwrite even if the destination file is up to date.
 - `--create-backup` will create a backup to the file before overwriting it;
-  eg. `C:\Users\geoff\Desktop\myfile.zip.bak`
+  eg. `myfile.zip.bak`
 - `--version` will display the program version number
 - `-?` or `-h` or `--help` will display the command line usage help
 
 ### Example
 ```shell
-github-release-downloader --owner Stephan-S --repo FS25_AutoDrive --output "C:\Users\geoff\Documents\My Games\FarmingSimulator2025\mods\FS25_AutoDrive.zip"
+github-release-downloader --owner geeooff --repo iis-log-rotator --output "C:\Users\geoff\Desktop\IisLogRotator-1.10.zip"
 ```
 
 ### Exit codes

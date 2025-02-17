@@ -1,4 +1,5 @@
 using GitHubReleaseDownloader.GitHub;
+using System.Collections.Immutable;
 using System.Diagnostics.CodeAnalysis;
 
 namespace GitHubReleaseDownloader;
@@ -92,28 +93,21 @@ internal static class ProgramHandler
         return 0;
     }
 
-    [UnconditionalSuppressMessage(
-        "AssemblyLoadTrimming",
-        "IL2026:RequiresUnreferencedCode",
-        Justification = "AsQueryable() is a safe call in this context"
-    )]
     internal static GitHubRelease? GetLatestRelease(GitHubRelease[]? releases, bool preRelease)
     {
         if (releases == null || releases.Length == 0)
             return null;
 
-        var filteredReleases = releases.AsQueryable();
-
         if (!preRelease)
         {
             // filtering pre-releases
-            filteredReleases = filteredReleases.Where(r => r.PreRelease == false);
+            releases = [.. releases.Where(r => r.PreRelease == false)];
         }
 
         // sorting releases by date
-        filteredReleases = filteredReleases.OrderByDescending(r => r.GetDate());
+        releases = [.. releases.OrderByDescending(r => r.GetDate()) ];
 
-        return filteredReleases.FirstOrDefault();
+        return releases.FirstOrDefault();
     }
 
     internal static GitHubAsset? GetAsset(GitHubRelease? release, FileInfo output)
@@ -122,15 +116,15 @@ internal static class ProgramHandler
             return null;
 
         var assetName = output.Name;
-        var filteredAssets = release.Assets.Where(a => a.Name == assetName).ToList();
+        var assets = release.Assets.Where(asset => asset.Name == assetName).ToArray();
 
-        if (filteredAssets.Count > 1)
+        if (assets.Length > 1)
         {
             Console.Error.WriteLine($"Found several assets with name \"{assetName}\" in release \"{release.Name}\"");
             return null;
         }
         else
-            return filteredAssets.SingleOrDefault();
+            return assets.SingleOrDefault();
     }
 
     internal static bool ShouldDownload(GitHubAsset asset, FileInfo output)

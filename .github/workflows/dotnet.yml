@@ -22,26 +22,28 @@ jobs:
     
     strategy:
       matrix:
-        profile: [ win-x64, win-arm64, osx-x64, osx-arm64, linux-x64, linux-arm64 ]
+        runner:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
 
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runner }}
 
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.x
+        global-json-file: global.json
         cache: true
         cache-dependency-path: src/packages.lock.json
     - name: Restore dependencies
-      run: dotnet restore src/ --locked-mode
-    # - name: Build
-    #   run: dotnet build src/ --no-restore --configuration Release
-    - name: Publish
-      run: dotnet publish src/ --no-restore /p:PublishProfile=${{ matrix.profile }}
+      run: dotnet restore src/ --use-current-runtime
+    - name: Build
+      run: dotnet build src/ --configuration Release --no-restore --use-current-runtime --self-contained
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ matrix.profile }} binary
-        path: artifacts/publish/github-release-downloader/release_${{ matrix.profile }}/*
+        name: ${{ runner.os }} ${{ runner.arch }} binary
+        path: artifacts/bin/github-release-downloader/release/**/*
+ 

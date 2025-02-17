@@ -1,0 +1,55 @@
+# This workflow doesn't work for now as GitHub runners don't have the necessary toolchain for cross architecture builds
+# I keep it to maybe use self-hosted runners later when I will have enough machines 
+
+name: .NET Cross-Architecture Publish
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+  NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+
+jobs:
+  build:
+    
+    strategy:
+      matrix:
+        runner:
+          - os: ubuntu-latest
+            pid: linux
+          - os: windows-latest
+            pid: win
+          - os: macos-latest
+            pid: osx
+        architecture:
+          - x64
+          - arm64
+
+    runs-on: ${{ matrix.runner.os }}
+ 
+    env:
+      RID: ${{ matrix.runner.pid }}-${{ matrix.architecture }}
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        global-json-file: global.json
+        cache: true
+        cache-dependency-path: src/packages.lock.json
+    - name: Restore dependencies
+      run: dotnet restore src/
+    - name: Publish
+      run: dotnet publish src/ --no-restore --runtime ${{ env.RID }}
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.RID }} binary
+        path: artifacts/publish/github-release-downloader/release_${{ env.RID }}/**/*
+ 
