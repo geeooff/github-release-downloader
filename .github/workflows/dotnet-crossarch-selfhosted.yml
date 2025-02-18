@@ -1,17 +1,17 @@
-name: .NET Cross-Architecture Publish
+name: .NET Cross-Architecture Self-Hosted Publish
 
 on:
   workflow_dispatch:
     inputs:
       runner:
-        description: 'Runner'
+        description: 'Self-Hosted Runner'
         required: true
-        default: ubuntu-latest
+        default: Linux
         type: choice
         options:
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
+          - Linux
+          - Windows
+          - macOS
       arch:
         description: 'Build Architecture'
         required: true
@@ -32,7 +32,7 @@ env:
 jobs:
   build:
 
-    runs-on: ${{ github.event.inputs.runner }}
+    runs-on: [ self-hosted, '${{ github.event.inputs.runner }}' ]
 
     steps:
     - uses: actions/checkout@v4
