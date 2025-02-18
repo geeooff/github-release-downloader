@@ -5,6 +5,27 @@ name: .NET Cross-Architecture Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      runner:
+        description: 'Runner'
+        required: true
+        default: ubuntu-latest
+        type: choice
+        options:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+          - self-hosted, Linux
+          - self-hosted, Windows
+          - self-hosted, macOS
+      arch:
+        description: 'Build Architecture'
+        required: true
+        default: x64
+        type: choice
+        options:
+          - x64
+          - arm64
 
 permissions:
   contents: read
@@ -16,24 +37,8 @@ env:
 
 jobs:
   build:
-    
-    strategy:
-      matrix:
-        runner:
-          - os: ubuntu-latest
-            pid: linux
-          - os: windows-latest
-            pid: win
-          - os: macos-latest
-            pid: osx
-        architecture:
-          - x64
-          - arm64
 
-    runs-on: ${{ matrix.runner.os }}
- 
-    env:
-      RID: ${{ matrix.runner.pid }}-${{ matrix.architecture }}
+    runs-on: ${{ github.workflow.inputs.runner }}
 
     steps:
     - uses: actions/checkout@v4
@@ -46,10 +51,10 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src/
     - name: Publish
-      run: dotnet publish src/ --no-restore --runtime ${{ env.RID }}
+      run: dotnet publish src/ --no-restore --arch ${{ github.workflow.inputs.arch }}
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: ${{ env.RID }} binary
-        path: artifacts/publish/github-release-downloader/release_${{ env.RID }}/**/*
+        name: ${{ runner.os }} ${{ runner.arch }} binary
+        path: artifacts/publish/github-release-downloader/release*/**/*
  
