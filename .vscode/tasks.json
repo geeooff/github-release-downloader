@@ -31,11 +31,39 @@
       },
       "args": [
         "publish",
-        "/p:PublishProfile=release",
+        "--use-current-runtime",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "dotnet: publish w/ arch",
+      "group": "none",
+      "command": "dotnet",
+      "type": "process",
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "args": [
+        "publish",
+        "--arch", "${input:arch}",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "arch",
+      "type": "pickString",
+      "description": "Pick up the target architecture",
+      "default": "x64",
+      "options": [
+        "x64",
+        "arm64"
+      ]
     }
   ]
 }
