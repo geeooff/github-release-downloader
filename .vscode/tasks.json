@@ -5,6 +5,7 @@
   "tasks": [
     {
       "label": "dotnet: build",
+      "detail": "Build the project",
       "group": {
         "kind": "build",
         "isDefault": true
@@ -23,6 +24,7 @@
     },
     {
       "label": "dotnet: publish",
+      "detail": "Publish the project",
       "group": "none",
       "command": "dotnet",
       "type": "process",
@@ -39,6 +41,7 @@
     },
     {
       "label": "dotnet: publish w/ arch",
+      "detail": "Publish the project for the selected architecture",
       "group": "none",
       "command": "dotnet",
       "type": "process",
@@ -52,6 +55,53 @@
         "/consoleloggerparameters:NoSummary"
       ],
       "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "github: package assets",
+      "detail": "Compress the published binary for the selected architecture to a zip/tar.gz file",
+      "group": "none",
+      "dependsOn": [
+        "dotnet: publish w/ arch"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/src"
+      },
+      "windows": {
+        "command": "powershell",
+        "options": {
+          "cwd": "${workspaceFolder}/artifacts/publish/github-release-downloader/release_win-${input:arch}"
+        },
+        "args": [
+          "Compress-Archive",
+          "-Path", "github-release-downloader.exe",
+          "-DestinationPath", "windows-${input:arch}.zip",
+          "-CompressionLevel", "Optimal",
+          "-Update"
+        ]
+      },
+      "linux": {
+        "command": "tar",
+        "options": {
+          "cwd": "${workspaceFolder}/artifacts/publish/github-release-downloader/release_linux-${input:arch}"
+        },
+        "args": [
+          "-czf",
+          "linux-${input:arch}.tar.gz",
+          "github-release-downloader"
+        ]
+      },
+      "osx": {
+        "command": "tar",
+        "options": {
+          "cwd": "${workspaceFolder}/artifacts/publish/github-release-downloader/release_osx-${input:arch}"
+        },
+        "args": [
+          "-czf",
+          "macOS-${input:arch}.tar.gz",
+          "github-release-downloader"
+        ]
+      },
+      "problemMatcher": []
     }
   ],
   "inputs": [
