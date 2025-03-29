@@ -4,15 +4,15 @@
     "net8.0": {
       "Microsoft.DotNet.ILCompiler": {
         "type": "Direct",
-        "requested": "[8.0.13, )",
-        "resolved": "8.0.13",
-        "contentHash": "CCIhseY9KUJDIYKt7qD1IRLQA6Hr/8Dky31KS6UrM2sFyaFUb2JLagT0Uy2BiSf1i1Qy3nPjRb0zc1JFogOi9w=="
+        "requested": "[8.0.14, )",
+        "resolved": "8.0.14",
+        "contentHash": "lJvndCQZJxHBVoD8VxfSJ2MaURHENC63sbeAJNfedvXvscgjQSpfVdcTsv0iGeSu9X05G05TYMCWVbZGj4Z51Q=="
       },
       "Microsoft.NET.ILLink.Tasks": {
         "type": "Direct",
-        "requested": "[8.0.13, )",
-        "resolved": "8.0.13",
-        "contentHash": "R19ZTaRiQAK+xo9ZwaHbF/1vb1wwR1Wn5+sqp9v8+CDjbdS8R6qftKdw0VSXWKm7VAMi7P+NCU4zxDzhEWcAwQ=="
+        "requested": "[8.0.14, )",
+        "resolved": "8.0.14",
+        "contentHash": "4U2fd7PexNKrK5ZqfqIcXZj9/lRRjFsLgA/pxuFQTuGQuLYP/+7yACz/j7EmWbEj/fspOf4mafi/vHIy/rKDzQ=="
       },
       "System.CommandLine": {
         "type": "Direct",
@@ -24,97 +24,97 @@
     "net8.0/linux-arm64": {
       "Microsoft.DotNet.ILCompiler": {
         "type": "Direct",
-        "requested": "[8.0.13, )",
-        "resolved": "8.0.13",
-        "contentHash": "CCIhseY9KUJDIYKt7qD1IRLQA6Hr/8Dky31KS6UrM2sFyaFUb2JLagT0Uy2BiSf1i1Qy3nPjRb0zc1JFogOi9w==",
+        "requested": "[8.0.14, )",
+        "resolved": "8.0.14",
+        "contentHash": "lJvndCQZJxHBVoD8VxfSJ2MaURHENC63sbeAJNfedvXvscgjQSpfVdcTsv0iGeSu9X05G05TYMCWVbZGj4Z51Q==",
         "dependencies": {
-          "runtime.linux-arm64.Microsoft.DotNet.ILCompiler": "8.0.13"
+          "runtime.linux-arm64.Microsoft.DotNet.ILCompiler": "8.0.14"
         }
       },
       "runtime.linux-arm64.Microsoft.DotNet.ILCompiler": {
         "type": "Transitive",
-        "resolved": "8.0.13",
-        "contentHash": "DgPxcaF0XporxXAfzZVK/vuhZixBObGqZ2fqLWooXOMDqimTT6MQ8CsOWWC/VTDzRHX+0rJbkvriKd/O+4GTWQ=="
+        "resolved": "8.0.14",
+        "contentHash": "4xnuocAl1L4do00o4jsW7po5lMhHZqF4wBAaJM2JzEtD6LT54jj3h+42ZBHD/Ckji78Uz6HRdoJ2q98hlcwghg=="
       }
     },
     "net8.0/linux-x64": {
       "Microsoft.DotNet.ILCompiler": {
         "type": "Direct",
-        "requested": "[8.0.13, )",
-        "resolved": "8.0.13",
-        "contentHash": "CCIhseY9KUJDIYKt7qD1IRLQA6Hr/8Dky31KS6UrM2sFyaFUb2JLagT0Uy2BiSf1i1Qy3nPjRb0zc1JFogOi9w==",
+        "requested": "[8.0.14, )",
+        "resolved": "8.0.14",
+        "contentHash": "lJvndCQZJxHBVoD8VxfSJ2MaURHENC63sbeAJNfedvXvscgjQSpfVdcTsv0iGeSu9X05G05TYMCWVbZGj4Z51Q==",
         "dependencies": {
-          "runtime.linux-x64.Microsoft.DotNet.ILCompiler": "8.0.13"
+          "runtime.linux-x64.Microsoft.DotNet.ILCompiler": "8.0.14"
         }
       },
       "runtime.linux-x64.Microsoft.DotNet.ILCompiler": {
         "type": "Transitive",
-        "resolved": "8.0.13",
-        "contentHash": "F/6J0r8N7VVL4AJHdawVFj4XxB/r1rw0oD0txuK6Om+m/SuidnGTGl2APUeZgqOtNtsIVYtL3L3jBYbo02xFeA=="
+        "resolved": "8.0.14",
+        "contentHash": "Jjg/BY6zn1IZ3dEqR6Dgp9YPXyPT3FxvjhZb/H1YNWj7rKkEMpfnFkPK+2zw/ccTJhoOv48TUkydkbx1/o3KEw=="
       }
     },
     "net8.0/osx-arm64": {
       "Microsoft.DotNet.ILCompiler": {
         "type": "Direct",
-        "requested": "[8.0.13, )",
-        "resolved": "8.0.13",
-        "contentHash": "CCIhseY9KUJDIYKt7qD1IRLQA6Hr/8Dky31KS6UrM2sFyaFUb2JLagT0Uy2BiSf1i1Qy3nPjRb0zc1JFogOi9w==",
+        "requested": "[8.0.14, )",
+        "resolved": "8.0.14",
+        "contentHash": "lJvndCQZJxHBVoD8VxfSJ2MaURHENC63sbeAJNfedvXvscgjQSpfVdcTsv0iGeSu9X05G05TYMCWVbZGj4Z51Q==",
         "dependencies": {
-          "runtime.osx-arm64.Microsoft.DotNet.ILCompiler": "8.0.13"
+          "runtime.osx-arm64.Microsoft.DotNet.ILCompiler": "8.0.14"
         }
       },
       "runtime.osx-arm64.Microsoft.DotNet.ILCompiler": {
         "type": "Transitive",
-        "resolved": "8.0.13",
-        "contentHash": "zhZU807MnAxckZWPuVXDbkAbU59/WvL2G/2VbXidnOXaXxATnJD/PMJ4aNmK/Vj3f9E7XKX7HXdreG15d8jqGg=="
+        "resolved": "8.0.14",
+        "contentHash": "HtDXsDh1Fnurp9PrGsLpHTkHpyQRWS+PbuAQ4+QjLsZyY1Do0beo7PfyUthKNV07CecsmM7x3+Qxeh2w40xBmw=="
       }
     },
     "net8.0/osx-x64": {
       "Microsoft.DotNet.ILCompiler": {
         "type": "Direct",
-        "requested": "[8.0.13, )",
-        "resolved": "8.0.13",
-        "contentHash": "CCIhseY9KUJDIYKt7qD1IRLQA6Hr/8Dky31KS6UrM2sFyaFUb2JLagT0Uy2BiSf1i1Qy3nPjRb0zc1JFogOi9w==",
+        "requested": "[8.0.14, )",
+        "resolved": "8.0.14",
+        "contentHash": "lJvndCQZJxHBVoD8VxfSJ2MaURHENC63sbeAJNfedvXvscgjQSpfVdcTsv0iGeSu9X05G05TYMCWVbZGj4Z51Q==",
         "dependencies": {
-          "runtime.osx-x64.Microsoft.DotNet.ILCompiler": "8.0.13"
+          "runtime.osx-x64.Microsoft.DotNet.ILCompiler": "8.0.14"
         }
       },
       "runtime.osx-x64.Microsoft.DotNet.ILCompiler": {
         "type": "Transitive",
-        "resolved": "8.0.13",
-        "contentHash": "eNC4zenZlkGF3VaqreVfa04rnw7g2eEHNPB99M22EYVmiSxyMu3exlN4t8e/gyYNt5Qy0KXKoNWZCYP/xZXEow=="
+        "resolved": "8.0.14",
+        "contentHash": "1Hud/IZhLp38XnPJHIyPz5GT5ss2mfg6kEYXbPRJhvsu1wNAaGXwYPt4w7s5BPWnYr3P/EEx8pSccWD2DfSXKw=="
       }
     },
     "net8.0/win-arm64": {
       "Microsoft.DotNet.ILCompiler": {
         "type": "Direct",
-        "requested": "[8.0.13, )",
-        "resolved": "8.0.13",
-        "contentHash": "CCIhseY9KUJDIYKt7qD1IRLQA6Hr/8Dky31KS6UrM2sFyaFUb2JLagT0Uy2BiSf1i1Qy3nPjRb0zc1JFogOi9w==",
+        "requested": "[8.0.14, )",
+        "resolved": "8.0.14",
+        "contentHash": "lJvndCQZJxHBVoD8VxfSJ2MaURHENC63sbeAJNfedvXvscgjQSpfVdcTsv0iGeSu9X05G05TYMCWVbZGj4Z51Q==",
         "dependencies": {
-          "runtime.win-arm64.Microsoft.DotNet.ILCompiler": "8.0.13"
+          "runtime.win-arm64.Microsoft.DotNet.ILCompiler": "8.0.14"
         }
       },
       "runtime.win-arm64.Microsoft.DotNet.ILCompiler": {
         "type": "Transitive",
-        "resolved": "8.0.13",
-        "contentHash": "3rYIdT5JkKWmh3b5sWtSEP7rOzIRqbeh+utbMCOH+W5YoYCGChUY3N19WTcKihAQVSMaIQWIu0QZyK10ytMqqQ=="
+        "resolved": "8.0.14",
+        "contentHash": "CHBO9SxHS/hNBticBD7uxGX2LqJTHns2woZqJLk4xYnkx/pLRAWQJjpgm72Lf9DSWVQf8vh0pddSFw/xbsvlBw=="
       }
     },
     "net8.0/win-x64": {
       "Microsoft.DotNet.ILCompiler": {
         "type": "Direct",
-        "requested": "[8.0.13, )",
-        "resolved": "8.0.13",
-        "contentHash": "CCIhseY9KUJDIYKt7qD1IRLQA6Hr/8Dky31KS6UrM2sFyaFUb2JLagT0Uy2BiSf1i1Qy3nPjRb0zc1JFogOi9w==",
+        "requested": "[8.0.14, )",
+        "resolved": "8.0.14",
+        "contentHash": "lJvndCQZJxHBVoD8VxfSJ2MaURHENC63sbeAJNfedvXvscgjQSpfVdcTsv0iGeSu9X05G05TYMCWVbZGj4Z51Q==",
         "dependencies": {
-          "runtime.win-x64.Microsoft.DotNet.ILCompiler": "8.0.13"
+          "runtime.win-x64.Microsoft.DotNet.ILCompiler": "8.0.14"
         }
       },
       "runtime.win-x64.Microsoft.DotNet.ILCompiler": {
         "type": "Transitive",
-        "resolved": "8.0.13",
-        "contentHash": "4M/96PlMWH0ysnPe+q4iZvGvIREeJsRXFsfANU2qVg3cyTCp+cGX4Sa7Inu2/MfV9+nx98oYBDAgiJvyig9plg=="
+        "resolved": "8.0.14",
+        "contentHash": "R8sYSj9FIf+miUFL5Db2fAcvcguU2K4a0d0NLuZKyvxsPHKRD25ag0QbWR0fDaURXEB8YjfPEBagxr1uIFWTTQ=="
       }
     }
   }
